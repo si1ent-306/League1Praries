@@ -1,13 +1,20 @@
 package com.example.elliottwagner.team;
 
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     int number;
     String firstName;
     String lastName;
     String country;
     int age;
+    String team;
+
+    ImageView photo;
     String position;
     int height;
     int weight;
@@ -20,7 +27,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(int number, String firstName, String lastName, String country, int age, String position, int height, int weight, int goals, int assists, int yellowCards, int redCards) {
+    public Player(int number, String firstName, String lastName, String country, int age, String position, int height, int weight, int goals, int assists, int yellowCards, int redCards, String team) {
         this.number = number;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,6 +40,16 @@ public class Player {
         this.assists = assists;
         this.yellowCards = yellowCards;
         this.redCards = redCards;
+        this.team = team;
+
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
     }
 
     public int getNumber() {
@@ -60,6 +77,12 @@ public class Player {
     }
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+    public ImageView getPhoto() {
+        return photo;
+    }
+    public void setPhoto(ImageView photo) {
+        this.photo = photo;
     }
 
     public String getCountry() {
