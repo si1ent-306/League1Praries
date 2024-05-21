@@ -3,6 +3,7 @@ package com.example.elliottwagner.team;
 import android.widget.ImageView;
 
 public class Team {
+    private int id;
     private Roster roster;
     private String name;
     private String city;
@@ -22,7 +23,8 @@ public class Team {
     public Team() {
     }
 
-    public Team(Roster roster, String name, String city, String division, String color, ImageView logo, int wins, int losses, int draws, int points, int gamesPlayed, int goalsScored, int goalsAllowed, int goalDifference, int standing) {
+    public Team(int id, Roster roster, String name, String city, String division, String color, ImageView logo, int wins, int losses, int draws, int points, int gamesPlayed, int goalsScored, int goalsAllowed, int goalDifference, int standing) {
+        this.id = id;
         this.roster = roster;
         this.name = name;
         this.city = city;
@@ -39,6 +41,8 @@ public class Team {
         this.goalDifference = goalDifference;
         this.standing = standing;
     }
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
 
     public Roster getRoster() {
         return roster;

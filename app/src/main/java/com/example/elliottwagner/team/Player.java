@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 
 public class Player implements Serializable {
+    int id;
     int number;
     String firstName;
     String lastName;
@@ -26,9 +27,23 @@ public class Player implements Serializable {
 
     public Player() {
     }
-
-    public Player(int number, String firstName, String lastName, String country, int age, String position, int height, int weight, int goals, int assists, int yellowCards, int redCards, String team) {
+    public Player(int number, int id, String firstName, String lastName, String country, int age, String position, int height, int weight, String team) {
         this.number = number;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.country = country;
+        this.age = age;
+        this.position = position;
+        this.height = height;
+        this.weight = weight;
+        this.team = team;
+
+    }
+
+    public Player(int number, int id, String firstName, String lastName, String country, int age, String position, int height, int weight, int goals, int assists, int yellowCards, int redCards, String team) {
+        this.number = number;
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
@@ -75,6 +90,15 @@ public class Player implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFullName() {
         return firstName + " " + lastName;
     }

@@ -14,6 +14,7 @@ public class TeamRosterPage extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Player> teamRoster;
     PlayerAdapter adapter;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,14 @@ public class TeamRosterPage extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvTeamRoster);
         LinearLayoutManager layoutManager = new LinearLayoutManager(TeamRosterPage.this);
         recyclerView.setLayoutManager(layoutManager);
+        //Create Teams
+        dbHelper.createTeams();
         teamRoster = new ArrayList<>();
         //Add players to the list
+        dbHelper = new DBHelper(this);
+        //Get all players from the database
+        teamRoster = dbHelper.getAllPlayers();
+        //Create adapter
         adapter = new PlayerAdapter(teamRoster);
         recyclerView.setAdapter(adapter);
 
