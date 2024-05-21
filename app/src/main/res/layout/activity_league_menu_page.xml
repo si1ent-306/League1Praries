@@ -24,13 +24,12 @@
             android:layout_weight="1"
             android:src="@drawable/viterralogo" />
 
-        <TextView
-            android:id="@+id/tvLeagueName"
+        <ImageView
+            android:id="@+id/ivLeagueName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="3"
-            android:textAlignment="center"
-            android:text="League 1 Prairies" />
+            android:src="@drawable/leagueoneprairies" />
 
         <Button
             android:id="@+id/btnOptions"
