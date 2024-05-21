@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:padding="10dp"
+    android:orientation="vertical"
+    tools:context=".LeagueMenuPage">
+
+    <LinearLayout
+        android:id="@+id/llLeagueHeader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ivSponsor"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/Viterra_Logo_Green_RGB" />
+
+        <TextView
+            android:id="@+id/tvLeagueName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textAlignment="center"
+            android:text="League 1 Prairies" />
+
+        <Button
+            android:id="@+id/btnOptions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="10sp"
+            android:text="Options" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llScoreboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvScoreboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="League Scoreboard"
+            android:textAlignment="center"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            id="@+id/rvScoreboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llStandings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvStandings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="League Standings"
+            android:textAlignment="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStandings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="League News"
+            android:textAlignment="center" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>
