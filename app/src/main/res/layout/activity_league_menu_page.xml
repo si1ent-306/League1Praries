@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/Viterra_Logo_Green_RGB" />
+            android:src="@drawable/viterralogo" />
 
         <TextView
             android:id="@+id/tvLeagueName"
