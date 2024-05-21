@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:padding="10dp"
+    android:layout_height="wrap_content"
+    android:padding="30dp"
+    android:paddingTop="10dp"
     android:orientation="vertical"
-    tools:context=".LeagueMenuPage">
+    tools:context=".league.LeagueMenuPage">
 
     <LinearLayout
         android:id="@+id/llLeagueHeader"
