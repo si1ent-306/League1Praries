@@ -53,8 +53,8 @@ public class LeagueSelectTeam extends AppCompatActivity implements LeagueSelectT
 
     @Override
     public void onItemClick(int position) {
-        Log.d("Team Clicked", "onItemClick: " + position);
         Team selectedTeam = teams.get(position);
+        Log.d("Team Clicked", "Selected Team: " + selectedTeam.getName());
         Intent intent = new Intent(this, TeamMainPage.class);
         intent.putExtra("team", selectedTeam);
         startActivity(intent);
