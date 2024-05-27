@@ -23,4 +23,5 @@ public class LeagueStandingsPage extends AppCompatActivity {
             return insets;
         });
     }
+    //TODO: Using streams, create the standings where the teams are sorted by their standings
 }

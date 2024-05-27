@@ -23,4 +23,5 @@ public class TeamMainPage extends AppCompatActivity {
             return insets;
         });
     }
+    //TODO: Receive the team that was selected and display the logo on the top, and change the color
 }

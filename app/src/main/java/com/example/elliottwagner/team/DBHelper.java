@@ -145,6 +145,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+    //TODO: Create all of the databases and tables
     public ArrayList<Player> getAllPlayers(Team team){
         ArrayList<Player> players = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();

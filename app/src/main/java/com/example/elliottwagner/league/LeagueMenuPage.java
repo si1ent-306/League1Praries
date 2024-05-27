@@ -56,4 +56,5 @@ public class LeagueMenuPage extends AppCompatActivity {
             startActivity(intent);
         });
     }
+    //TODO: Fully Create the databases and try to make them work by creating each team once on this page.
 }

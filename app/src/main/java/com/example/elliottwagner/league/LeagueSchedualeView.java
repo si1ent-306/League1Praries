@@ -23,4 +23,5 @@ public class LeagueSchedualeView extends AppCompatActivity {
             return insets;
         });
     }
+    //TODO: Make a recylcer view for games based off of the game database
 }
