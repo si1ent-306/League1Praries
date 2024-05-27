@@ -14,6 +14,48 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
+
+    public static String PLAYER_ID = "playerID";
+    public static String PLAYER_FIRST_NAME = "playerFirstName";
+    public static String PLAYER_LAST_NAME = "playerLastName";
+    public static String PLAYER_NUMBER = "playerNumber";
+    public static String PLAYER_POSITION = "playerPosition";
+    public static String PLAYER_TEAM = "playerTeam";
+    public static String PLAYER_COUNTRY = "playerCountry";
+    public static String PLAYER_AGE = "playerAge";
+    public static String PLAYER_HEIGHT = "playerHeight";
+    public static String PLAYER_WEIGHT = "playerWeight";
+    public static String TEAM_ID = "teamID";
+    public static String TEAM_NAME = "teamName";
+    public static String TEAM_CITY = "teamCity";
+    public static String TEAM_DIVISION = "teamDivision";
+    public static String TEAM_COLOR = "teamColor";
+    public static String TEAM_WINS = "teamWins";
+    public static String TEAM_LOSSES = "teamLosses";
+    public static String TEAM_DRAWS = "teamDraws";
+    public static String TEAM_POINTS = "teamPoints";
+    public static String TEAM_GOAL_DIFFERENCE = "teamGoalDifference";
+    public static String GAME_ID = "gameID";
+    public static String GAME_DATE = "gameDate";
+    public static String GAME_HOME_TEAM = "gameHomeTeam";
+    public static String GAME_AWAY_TEAM = "gameAwayTeam";
+    public static String GAME_HOME_SCORE = "gameHomeScore";
+    public static String GAME_AWAY_SCORE = "gameAwayScore";
+    public static String GAME_START_TIME = "gameStartTime";
+    public static String GAME_STADIUM = "gameStadium";
+    public static String STAT_ID = "statID";
+    public static String STAT_PLAYER_ID = "playerID";
+    public static String STAT_PLAYER_FIRST_NAME = "playerFirstName";
+    public static String STAT_PLAYER_LAST_NAME = "playerLastName";
+    public static String STAT_PLAYER_POSITION = "playerPosition";
+    public static String STAT_PLAYER_TEAM = "playerTeam";
+    public static String STAT_PLAYER_GOALS = "playerGoals";
+    public static String STAT_PLAYER_ASSISTS = "playerAssists";
+    public static String STAT_PLAYER_YELLOW_CARDS = "playerYellowCards";
+    public static String STAT_PLAYER_RED_CARDS = "playerRedCards";
+
+
+
     public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -34,58 +76,58 @@ public class DBHelper extends SQLiteOpenHelper {
         //Create a table for all of the players
         queryCreatePlayersTable = "CREATE TABLE tblPlayers " +
                 "( " +
-                "playerID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "playerFirstName TEXT, " +
-                "playerLastName TEXT, " +
-                "playerNumber INTEGER, " +
-                "playerPosition TEXT" +
-                "playerTeam TEXT" +
-                "playerCountry TEXT " +
-                "playerAge INTEGER " +
-                "playerHeight INTEGER " +
-                "playerWeight INTEGER " +
+                 PLAYER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                PLAYER_FIRST_NAME + " TEXT, " +
+                PLAYER_LAST_NAME +  "TEXT, " +
+                PLAYER_NUMBER + "INTEGER, " +
+                PLAYER_POSITION + "TEXT, " +
+                PLAYER_TEAM + "TEXT, " +
+                PLAYER_COUNTRY + "TEXT, " +
+                PLAYER_AGE + "INTEGER, " +
+                PLAYER_HEIGHT + "INTEGER, " +
+                PLAYER_WEIGHT + "INTEGER, " +
                 ")";
 
         Log.d("DBHelper", "query made: " + queryCreatePlayersTable);
         //Create a table for all of the teams
         queryCreateTeamsTable = "CREATE TABLE tblTeams " +
                 "( " +
-                "teamID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "teamName TEXT, " +
-                "teamCity TEXT " +
-                "teamDivision TEXT " +
-                "teamColor TEXT " +
-                "teamWins INTEGER " +
-                "teamLosses INTEGER " +
-                "teamDraws INTEGER " +
-                "teamPoints INTEGER " +
-                "teamGoalDifference INTEGER " +
+                TEAM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TEAM_NAME + "TEXT, " +
+                TEAM_CITY + "TEXT, " +
+                TEAM_DIVISION + "TEXT " +
+                TEAM_COLOR + "TEXT " +
+                TEAM_WINS + "INTEGER " +
+                TEAM_LOSSES + "INTEGER " +
+                TEAM_DRAWS + "INTEGER " +
+                TEAM_POINTS + "INTEGER " +
+                TEAM_GOAL_DIFFERENCE + "INTEGER " +
                 ")";
         //Create a table for all of the games
         queryCreateGamesTable = "CREATE TABLE tblGames " +
                 "( " +
-                "gameID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "gameDate TEXT, " +
-                "gameHomeTeam TEXT, " +
-                "gameAwayTeam TEXT, " +
-                "gameHomeScore INTEGER, " +
-                "gameAwayScore INTEGER " +
-                "gameStartTime TEXT " +
-                "gameStadium TEXT " +
+                GAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                GAME_DATE + " TEXT, " +
+                GAME_HOME_TEAM + " TEXT, " +
+                GAME_AWAY_TEAM + " TEXT, " +
+                GAME_HOME_SCORE + " INTEGER, " +
+                GAME_AWAY_SCORE + " INTEGER " +
+                GAME_START_TIME + " TEXT " +
+                GAME_STADIUM + " TEXT " +
                 ")";
         //Create a table for all of the stats
         queryCreateStatsTable = "CREATE TABLE tblStats " +
                 "( " +
-                "statID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "playerID INTEGER, " +
-                "playerFirstName TEXT, " +
-                "playerLastName TEXT, " +
-                "playerPosition TEXT" +
-                "playerTeam TEXT" +
-                "playerGoals INTEGER " +
-                "playerAssists INTEGER " +
-                "playerYellowCards INTEGER " +
-                "playerRedCards INTEGER " +
+                STAT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                STAT_PLAYER_ID + " INTEGER, " +
+                STAT_PLAYER_FIRST_NAME + " TEXT, " +
+                STAT_PLAYER_LAST_NAME + " TEXT, " +
+                STAT_PLAYER_POSITION + " TEXT, " +
+                STAT_PLAYER_TEAM +" TEXT" +
+                STAT_PLAYER_GOALS + " INTEGER " +
+                STAT_PLAYER_ASSISTS + " INTEGER " +
+                STAT_PLAYER_YELLOW_CARDS + " INTEGER " +
+                STAT_PLAYER_RED_CARDS + " INTEGER " +
                 ")";
 
         // execute the query

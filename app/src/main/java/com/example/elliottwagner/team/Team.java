@@ -2,10 +2,11 @@ package com.example.elliottwagner.team;
 
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Team {
+public class Team implements Serializable {
     private int id;
     private List<Player> roster;
     private String name;
