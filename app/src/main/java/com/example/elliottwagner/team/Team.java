@@ -2,14 +2,17 @@ package com.example.elliottwagner.team;
 
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Team {
     private int id;
-    private Roster roster;
+    private List<Player> roster;
     private String name;
     private String city;
     private String division;
     private String color;
-    private ImageView logo;
+    private int logo;
     private int wins;
     private int losses;
     private int draws;
@@ -23,7 +26,7 @@ public class Team {
     public Team() {
     }
 
-    public Team(int id, Roster roster, String name, String city, String division, String color, ImageView logo, int wins, int losses, int draws, int points, int gamesPlayed, int goalsScored, int goalsAllowed, int goalDifference, int standing) {
+    public Team(int id, List<Player> roster, String name, String city, String division, String color, int logo, int wins, int losses, int draws, int points, int gamesPlayed, int goalsScored, int goalsAllowed, int goalDifference, int standing) {
         this.id = id;
         this.roster = roster;
         this.name = name;
@@ -44,11 +47,11 @@ public class Team {
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
 
-    public Roster getRoster() {
+    public List<Player> getRoster() {
         return roster;
     }
 
-    public void setRoster(Roster roster) {
+    public void setRoster(List<Player> roster) {
         this.roster = roster;
     }
 
@@ -84,11 +87,11 @@ public class Team {
         this.color = color;
     }
 
-    public ImageView getLogo() {
+    public int getLogo() {
         return logo;
     }
 
-    public void setLogo(ImageView logo) {
+    public void setLogo(int logo) {
         this.logo = logo;
     }
 

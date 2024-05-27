@@ -29,7 +29,6 @@ public class TeamRosterPage extends AppCompatActivity {
         //Add players to the list
         dbHelper = new DBHelper(this);
         //Get all players from the database
-        teamRoster = dbHelper.getAllPlayers();
         //Create adapter
         adapter = new PlayerAdapter(teamRoster);
         recyclerView.setAdapter(adapter);

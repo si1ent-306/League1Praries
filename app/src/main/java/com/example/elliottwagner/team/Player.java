@@ -15,7 +15,6 @@ public class Player implements Serializable {
     int age;
     String team;
 
-    ImageView photo;
     String position;
     int height;
     int weight;
@@ -101,12 +100,6 @@ public class Player implements Serializable {
 
     public String getFullName() {
         return firstName + " " + lastName;
-    }
-    public ImageView getPhoto() {
-        return photo;
-    }
-    public void setPhoto(ImageView photo) {
-        this.photo = photo;
     }
 
     public String getCountry() {

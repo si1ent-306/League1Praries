@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="30dp"
-    android:paddingTop="10dp"
+    android:padding="10dp"
     android:orientation="vertical"
     tools:context=".league.LeagueMenuPage">
 

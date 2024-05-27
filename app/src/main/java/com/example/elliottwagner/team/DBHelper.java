@@ -1,5 +1,6 @@
 package com.example.elliottwagner.team;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
@@ -127,5 +128,30 @@ public class DBHelper extends SQLiteOpenHelper {
     public void createTeams() {
         SQLiteDatabase db = this.getWritableDatabase();
         //Create a table for all of the teams
+
+
+    }
+
+    public void addTeam(Team team) {
+        // create a reference to the database (writable)
+        SQLiteDatabase db = getWritableDatabase();
+
+        // create the key-value pair for the record
+        ContentValues values = new ContentValues();
+
+        // put the values into the key-value pair
+        values.put("teamID", team.getId());
+        values.put("teamName", team.getName());
+        values.put("teamCity", team.getCity());
+        values.put("teamDivision", team.getDivision());
+        values.put("teamColor", team.getColor());
+        values.put("teamWins", team.getWins());
+        values.put("teamLosses", team.getLosses());
+        values.put("teamDraws", team.getDraws());
+        values.put("teamPoints", team.getPoints());
+        values.put("teamGoalDifference", team.getGoalDifference());
+
+        // store the key-value pair to the table
+        db.insert("tblTeams", null, values);
     }
 }
