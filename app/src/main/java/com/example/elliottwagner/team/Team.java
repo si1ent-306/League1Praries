@@ -1,18 +1,20 @@
 package com.example.elliottwagner.team;
 
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Team implements Serializable {
+public class Team implements Serializable, Parcelable {
     private int id;
     private List<Player> roster;
     private String name;
     private String city;
     private String division;
-    private String color;
+    private int color;
     private int logo;
     private int wins;
     private int losses;
@@ -27,7 +29,7 @@ public class Team implements Serializable {
     public Team() {
     }
 
-    public Team(int id, List<Player> roster, String name, String city, String division, String color, int logo, int wins, int losses, int draws, int points, int gamesPlayed, int goalsScored, int goalsAllowed, int goalDifference, int standing) {
+    public Team(int id, List<Player> roster, String name, String city, String division, int color, int logo, int wins, int losses, int draws, int points, int gamesPlayed, int goalsScored, int goalsAllowed, int goalDifference, int standing) {
         this.id = id;
         this.roster = roster;
         this.name = name;
@@ -45,6 +47,49 @@ public class Team implements Serializable {
         this.goalDifference = goalDifference;
         this.standing = standing;
     }
+
+    public Team(int id, String name, String city, String division,int color, int wins, int losses, int draws, int points, int goalDifference, int standing) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.division = division;
+        this.color = color;
+        this.wins = wins;
+        this.losses = losses;
+        this.draws = draws;
+        this.points = points;
+        this.goalDifference = goalDifference;
+        this.standing = standing;
+    }
+
+    protected Team(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        city = in.readString();
+        division = in.readString();
+        color = in.readInt();
+        logo = in.readInt();
+        wins = in.readInt();
+        losses = in.readInt();
+        draws = in.readInt();
+        points = in.readInt();
+        gamesPlayed = in.readInt();
+        goalsScored = in.readInt();
+        goalsAllowed = in.readInt();
+        goalDifference = in.readInt();
+        standing = in.readInt();
+    }
+    public static final Creator<Team> CREATOR = new Creator<Team>() {
+        @Override
+        public Team createFromParcel(Parcel in) {
+            return new Team(in);
+        }
+
+        @Override
+        public Team[] newArray(int size) {
+            return new Team[size];
+        }
+    };
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
 
@@ -80,11 +125,11 @@ public class Team implements Serializable {
         this.division = division;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(int color) {
         this.color = color;
     }
 
@@ -187,5 +232,29 @@ public class Team implements Serializable {
                 ", goalDifference=" + goalDifference +
                 ", standing=" + standing +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(city);
+        dest.writeString(division);
+        dest.writeInt(color);
+        dest.writeInt(logo);
+        dest.writeInt(wins);
+        dest.writeInt(losses);
+        dest.writeInt(draws);
+        dest.writeInt(points);
+        dest.writeInt(gamesPlayed);
+        dest.writeInt(goalsScored);
+        dest.writeInt(goalsAllowed);
+        dest.writeInt(goalDifference);
+        dest.writeInt(standing);
     }
 }

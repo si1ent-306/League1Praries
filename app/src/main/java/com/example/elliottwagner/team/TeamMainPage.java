@@ -1,6 +1,12 @@
 package com.example.elliottwagner.team;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,18 +15,52 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.elliottwagner.R;
+import com.example.elliottwagner.league.LeagueMenuPage;
+import com.example.elliottwagner.league.LeagueSelectTeam;
+
+import java.util.Objects;
 
 public class TeamMainPage extends AppCompatActivity {
+    ImageView teamLogo;
+    Bundle extras = null;
+    Button chooseTeam;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //will hide the title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // hide the title bar
+        Objects.requireNonNull(getSupportActionBar()).hide();
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_team_main_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        extras = getIntent().getExtras();
+        Team team = Objects.requireNonNull(extras).getParcelable("team");
+
+        view = findViewById(R.id.main);
+        teamLogo = findViewById(R.id.ivTeamLogo);
+        teamLogo.setImageResource(Objects.requireNonNull(team).getLogo());
+        switch (team.getName()){
+            case "Regina":
+                view.setBackgroundColor(getResources().getColor(R.color.fcReginaBlue));
+                break;
+            case "Saskatoon":
+                view.setBackgroundColor(getResources().getColor(R.color.saskatoonGreen));
+
+                break;
+            case "Winnipeg":
+                view.setBackgroundColor(getResources().getColor(R.color.fcWinnipegRed));
+                break;
+        }
+        Log.d("TeamMainPage", "onCreate: " + team.getName());
+        Log.d("TeamMainPage", "onCreate: " + team.getColor());
+
+        chooseTeam = findViewById(R.id.btnOptions);
+        chooseTeam.setOnClickListener(v -> {
+            Intent intent = new Intent(TeamMainPage.this, LeagueSelectTeam.class);
+            startActivity(intent);
         });
     }
     //TODO: Receive the team that was selected and display the logo on the top, and change the color

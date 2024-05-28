@@ -41,14 +41,14 @@ public class LeagueMenuPage extends AppCompatActivity {
         setContentView(R.layout.activity_league_menu_page);
         // add some teams to the database
         DBHelper dbHelper = new DBHelper(this);
-        dbHelper.addTeam(new Team(1, new ArrayList<>(), "FC Regina", "Regina", "Saskatchewan", "Green", R.drawable.reginalogo, 0,0,0,0,0,0,0,0,1 ));
-        dbHelper.addTeam(new Team(2, new ArrayList<>(), "Winnipeg FC", "Winnipeg", "Manitoba", "Blue", R.drawable.winnipeglogo, 0,0,0,0,0,0,0,0,2 ));
-        dbHelper.addTeam(new Team(3, new ArrayList<>(), "FC Brandon", "Victoria", "Manitoba", "Blue", R.drawable.brandonlogo, 0,0,0,0,0,0,0,0,3 ));
-        dbHelper.addTeam(new Team(4, new ArrayList<>(), "AFC MJ", "Victoria", "Saskatchewan", "Blue", R.drawable.mjlogo, 0,0,0,0,0,0,0,0,4 ));
-        dbHelper.addTeam(new Team(5, new ArrayList<>(), "Valour U21", "Victoria", "Manitoba", "Blue", R.drawable.valourlogo, 0,0,0,0,0,0,0,0,5 ));
-        dbHelper.addTeam(new Team(6, new ArrayList<>(), "Yorkton Wanderers", "Yorkton", "Saskatchewan", "Blue", R.drawable.yorktonlogo, 0,0,0,0,0,0,0,0,6 ));
-        dbHelper.addTeam(new Team(7, new ArrayList<>(), "Manitoba United", "Winnipeg", "Manitoba", "Blue", R.drawable.manitobalogo, 0,0,0,0,0,0,0,0,7 ));
-        dbHelper.addTeam(new Team(8, new ArrayList<>(), "Saskatoon Impact", "Victoria", "Saskatchewan", "Blue", R.drawable.saskatoonlogo, 0,0,0,0,0,0,0,0,8 ));
+        dbHelper.addTeam(new Team(1, new ArrayList<>(), "FC Regina", "Regina", "Saskatchewan", 2600, R.drawable.reginalogo, 0,0,0,0,0,0,0,0,1 ));
+        dbHelper.addTeam(new Team(2, new ArrayList<>(), "Winnipeg FC", "Winnipeg", "Manitoba", 1818, R.drawable.winnipeglogo, 0,0,0,0,0,0,0,0,2 ));
+        dbHelper.addTeam(new Team(3, new ArrayList<>(), "FC Brandon", "Victoria", "Manitoba", 1818, R.drawable.brandonlogo, 0,0,0,0,0,0,0,0,3 ));
+        dbHelper.addTeam(new Team(4, new ArrayList<>(), "AFC MJ", "Victoria", "Saskatchewan", 1818, R.drawable.mjlogo, 0,0,0,0,0,0,0,0,4 ));
+        dbHelper.addTeam(new Team(5, new ArrayList<>(), "Valour U21", "Victoria", "Manitoba", 1818, R.drawable.valourlogo, 0,0,0,0,0,0,0,0,5 ));
+        dbHelper.addTeam(new Team(6, new ArrayList<>(), "Yorkton Wanderers", "Yorkton", "Saskatchewan", 1818, R.drawable.yorktonlogo, 0,0,0,0,0,0,0,0,6 ));
+        dbHelper.addTeam(new Team(7, new ArrayList<>(), "Manitoba United", "Winnipeg", "Manitoba", 1818, R.drawable.manitobalogo, 0,0,0,0,0,0,0,0,7 ));
+        dbHelper.addTeam(new Team(8, new ArrayList<>(), "Saskatoon Impact", "Victoria", "Saskatchewan", 1818, R.drawable.saskatoonlogo, 0,0,0,0,0,0,0,0,8 ));
 
         chooseTeam = findViewById(R.id.btnOptions);
         chooseTeam.setOnClickListener(v -> {

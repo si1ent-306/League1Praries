@@ -3,16 +3,18 @@ package com.example.elliottwagner;
 import com.example.elliottwagner.team.Team;
 
 public class Game {
+
     private Team homeTeam;
     private Team awayTeam;
     private int homeScore;
     private int awayScore;
-    private int startTime;
-    private int dateOfGame;
+    private String startTime;
+    private String dateOfGame;
     private int gameID;
     private String stadium;
 
-    public Game(Team homeTeam, Team awayTeam, int homeScore, int awayScore, int startTime, int dateOfGame, int gameID, String stadium) {
+    public Game(int gameID, String  dateOfGame, Team homeTeam, Team awayTeam, int homeScore, int awayScore, String startTime, String stadium) {
+
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = homeScore;
@@ -55,19 +57,19 @@ public class Game {
         this.awayScore = awayScore;
     }
 
-    public int getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(int startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public int getDateOfGame() {
+    public String getDateOfGame() {
         return dateOfGame;
     }
 
-    public void setDateOfGame(int dateOfGame) {
+    public void setDateOfGame(String dateOfGame) {
         this.dateOfGame = dateOfGame;
     }
 
