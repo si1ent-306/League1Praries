@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:text="@string/select_team" />
     </LinearLayout>
 
@@ -50,7 +50,7 @@
             android:id="@+id/tvScoreboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Team Scoreboard"
+            android:text="Team Schedule"
             android:textAlignment="center"/>
 
         <androidx.recyclerview.widget.RecyclerView

@@ -73,20 +73,19 @@ public class DBHelper extends SQLiteOpenHelper {
         String queryCreateTeamsTable = "";
         String queryCreateGamesTable = "";
         String queryCreateStatsTable = "";
-        // create the query for the table
         //Create a table for all of the players
         queryCreatePlayersTable = "CREATE TABLE tblPlayers " +
                 "( " +
                 PLAYER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                PLAYER_FIRST_NAME + " TEXT " +
-                PLAYER_LAST_NAME +  "TEXT " +
-                PLAYER_NUMBER + "INTEGER " +
-                PLAYER_POSITION + "TEXT " +
-                PLAYER_TEAM + "TEXT " +
-                PLAYER_COUNTRY + "TEXT " +
-                PLAYER_AGE + "INTEGER " +
-                PLAYER_HEIGHT + "INTEGER " +
-                PLAYER_WEIGHT + "INTEGER " +
+                PLAYER_FIRST_NAME + " TEXT, " +
+                PLAYER_LAST_NAME +  " TEXT, " +
+                PLAYER_NUMBER + " INTEGER, " +
+                PLAYER_POSITION + " TEXT, " +
+                PLAYER_TEAM + " TEXT, " +
+                PLAYER_COUNTRY + " TEXT, " +
+                PLAYER_AGE + " INTEGER, " +
+                PLAYER_HEIGHT + " INTEGER, " +
+                PLAYER_WEIGHT + " INTEGER " +
                 ")";
 
         Log.d("DBHelper", "query made: " + queryCreatePlayersTable);
@@ -94,16 +93,16 @@ public class DBHelper extends SQLiteOpenHelper {
         queryCreateTeamsTable = "CREATE TABLE tblTeams " +
                 "( " +
                 TEAM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                TEAM_NAME + "TEXT, " +
-                TEAM_CITY + "TEXT, " +
-                TEAM_DIVISION + "TEXT " +
-                TEAM_COLOR + "TEXT " +
-                TEAM_WINS + "INTEGER " +
-                TEAM_LOSSES + "INTEGER " +
-                TEAM_DRAWS + "INTEGER " +
-                TEAM_POINTS + "INTEGER " +
-                TEAM_GOAL_DIFFERENCE + "INTEGER " +
-                TEAM_STANDING + "TEXT "+
+                TEAM_NAME + " TEXT, " +
+                TEAM_CITY + " TEXT, " +
+                TEAM_DIVISION + " TEXT, " +
+                TEAM_COLOR + " TEXT, " +
+                TEAM_WINS + " INTEGER, " +
+                TEAM_LOSSES + " INTEGER, " +
+                TEAM_DRAWS + " INTEGER, " +
+                TEAM_POINTS + " INTEGER, " +
+                TEAM_GOAL_DIFFERENCE + " INTEGER, " +
+                TEAM_STANDING + " TEXT "+
                 ")";
         //Create a table for all of the games
         queryCreateGamesTable = "CREATE TABLE tblGames " +
@@ -113,8 +112,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 GAME_HOME_TEAM + " TEXT, " +
                 GAME_AWAY_TEAM + " TEXT, " +
                 GAME_HOME_SCORE + " INTEGER, " +
-                GAME_AWAY_SCORE + " INTEGER " +
-                GAME_START_TIME + " TEXT " +
+                GAME_AWAY_SCORE + " INTEGER, " +
+                GAME_START_TIME + " TEXT, " +
                 GAME_STADIUM + " TEXT " +
                 ")";
         //Create a table for all of the stats
@@ -125,10 +124,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 STAT_PLAYER_FIRST_NAME + " TEXT, " +
                 STAT_PLAYER_LAST_NAME + " TEXT, " +
                 STAT_PLAYER_POSITION + " TEXT, " +
-                STAT_PLAYER_TEAM +" TEXT" +
-                STAT_PLAYER_GOALS + " INTEGER " +
-                STAT_PLAYER_ASSISTS + " INTEGER " +
-                STAT_PLAYER_YELLOW_CARDS + " INTEGER " +
+                STAT_PLAYER_TEAM +" TEXT," +
+                STAT_PLAYER_GOALS + " INTEGER, " +
+                STAT_PLAYER_ASSISTS + " INTEGER, " +
+                STAT_PLAYER_YELLOW_CARDS + " INTEGER, " +
                 STAT_PLAYER_RED_CARDS + " INTEGER " +
                 ")";
 
@@ -149,11 +148,16 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     //TODO: Create all of the databases and tables
     public ArrayList<Player> getAllPlayers(Team team){
+        //Create a list of players
         ArrayList<Player> players = new ArrayList<>();
+        //Get a reference to the database
         SQLiteDatabase db = this.getReadableDatabase();
+        //Create a query to get all of the players where the team is the same as the team passed in
         String query = "SELECT * FROM tblPlayers WHERE playerTeam = team.teamName";
+        //Execute the query
         Cursor cursor = db.rawQuery(query,null);
         while(cursor.moveToNext()){
+            //Get the values from the cursor
             int playerID = cursor.getInt(0);
             String playerFirstName = cursor.getString(1);
             String playerLastName = cursor.getString(2);
@@ -164,9 +168,11 @@ public class DBHelper extends SQLiteOpenHelper {
             int playerAge = cursor.getInt(7);
             int playerHeight = cursor.getInt(8);
             int playerWeight = cursor.getInt(9);
+            //Create a new player object
             Player player = new Player(playerID,playerNumber,playerFirstName,playerLastName,playerCountry,playerAge, playerPosition,playerHeight,playerWeight, playerTeam);
             players.add(player);
         }
+        //Return all of the players
         return players;
     }
     public ArrayList<Team> getAllTeams(){
@@ -191,52 +197,84 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return teams;
     }
-    public ArrayList<Game> getAllGames(){
-        ArrayList<Game> games = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM tblGames";
-        Cursor cursor = db.rawQuery(query,null);
-        while(cursor.moveToNext()){
-            int  gameID = cursor.getInt(0);
-            String gameDate = cursor.getString(1);
-            Object gameHomeTeam = cursor.getType(2);
-            Object gameAwayTeam = cursor.getType(3);
-            int gameHomeScore = cursor.getInt(4);
-            int gameAwayScore = cursor.getInt(5);
-            String gameStartTime = cursor.getString(6);
-            String gameStadium = cursor.getString(7);
-            Game game = new Game(gameID,gameDate,(Team) gameHomeTeam, (Team)gameAwayTeam,gameHomeScore,gameAwayScore,gameStartTime,gameStadium);
-            games.add(game);
-        }
-        return games;
-    }
-    public void createTeams() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        //Create a table for all of the teams
-
-
-    }
+//    public ArrayList<Game> getAllGames(){
+//        ArrayList<Game> games = new ArrayList<>();
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        String query = "SELECT * FROM tblGames";
+//        Cursor cursor = db.rawQuery(query,null);
+//        while(cursor.moveToNext()){
+//            int  gameID = cursor.getInt(0);
+//            String gameDate = cursor.getString(1);
+//            String gameHomeTeam = cursor.getString(2);
+//            String gameAwayTeam = cursor.getString(3);
+//            int gameHomeScore = cursor.getInt(4);
+//            int gameAwayScore = cursor.getInt(5);
+//            String gameStartTime = cursor.getString(6);
+//            String gameStadium = cursor.getString(7);
+//            Game game = new Game(gameID,gameDate,null, null,gameHomeScore,gameAwayScore,gameStartTime,gameStadium);
+//            game.setHomeTeam(gameHomeTeam);
+//            game.setAwayTeam(gameAwayTeam);
+//            games.add(game);
+//        }
+//        return games;
+//    }
 
     public void addTeam(Team team) {
         // create a reference to the database (writable)
         SQLiteDatabase db = getWritableDatabase();
-
         // create the key-value pair for the record
         ContentValues values = new ContentValues();
-
         // put the values into the key-value pair
-        values.put("teamID", team.getId());
-        values.put("teamName", team.getName());
-        values.put("teamCity", team.getCity());
-        values.put("teamDivision", team.getDivision());
-        values.put("teamColor", team.getColor());
-        values.put("teamWins", team.getWins());
-        values.put("teamLosses", team.getLosses());
-        values.put("teamDraws", team.getDraws());
-        values.put("teamPoints", team.getPoints());
-        values.put("teamGoalDifference", team.getGoalDifference());
-
+        values.put(TEAM_ID, team.getId());
+        values.put(TEAM_NAME, team.getName());
+        values.put(TEAM_CITY, team.getCity());
+        values.put(TEAM_DIVISION, team.getDivision());
+        values.put(TEAM_COLOR, team.getColor());
+        values.put(TEAM_WINS, team.getWins());
+        values.put(TEAM_LOSSES, team.getLosses());
+        values.put(TEAM_DRAWS, team.getDraws());
+        values.put(TEAM_POINTS, team.getPoints());
+        values.put(TEAM_GOAL_DIFFERENCE, team.getGoalDifference());
         // store the key-value pair to the table
         db.insert("tblTeams", null, values);
+        db.close();
     }
+    public void addPlayer(Player player) {
+        // create a reference to the database (writable)
+        SQLiteDatabase db = getWritableDatabase();
+        // create the key-value pair for the record
+        ContentValues values = new ContentValues();
+        // put the values into the key-value pair
+        values.put(PLAYER_ID, player.getId());
+        values.put(PLAYER_FIRST_NAME, player.getFirstName());
+        values.put(PLAYER_LAST_NAME, player.getLastName());
+        values.put(PLAYER_NUMBER, player.getNumber());
+        values.put(PLAYER_POSITION, player.getPosition());
+        values.put(PLAYER_TEAM, player.getTeam());
+        values.put(PLAYER_COUNTRY, player.getCountry());
+        values.put(PLAYER_AGE, player.getAge());
+        values.put(PLAYER_HEIGHT, player.getHeight());
+        values.put(PLAYER_WEIGHT, player.getWeight());
+        // store the key-value pair to the table
+        db.insert("tblPlayers", null, values);
+        db.close();
+    }
+//    public void addGame(Game game) {
+//        // create a reference to the database (writable)
+//        SQLiteDatabase db = getWritableDatabase();
+//        // create the key-value pair for the record
+//        ContentValues values = new ContentValues();
+//        // put the values into the key-value pair
+//        values.put("gameID", game.getGameID());
+//        values.put("gameDate", game.getDateOfGame());
+//        values.put("gameHomeTeam", game.getHomeTeam());
+//        values.put("gameAwayTeam", game.getAwayTeam());
+//        values.put("gameHomeScore", game.getHomeScore());
+//        values.put("gameAwayScore", game.getAwayScore());
+//        values.put("gameStartTime", game.getStartTime());
+//        values.put("gameStadium", game.getStadium());
+//        // store the key-value pair to the table
+//        db.insert("tblGames", null, values);
+//        db.close();
+//    }
 }

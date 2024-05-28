@@ -19,7 +19,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivPlayerImage"
             android:layout_width="67dp"
             android:layout_height="64dp"
             android:src="@drawable/emptyplayerimg"
@@ -31,7 +31,7 @@
             android:layout_width="99dp"
             android:layout_height="26dp"
             android:text="Number"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ivPlayerImage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_height="26dp"
             android:text="Team"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView" />
+            app:layout_constraintStart_toEndOf="@+id/ivPlayerImage" />
 
         <TextView
             android:id="@+id/tvCountry"
@@ -70,7 +70,7 @@
             android:id="@+id/tvPosition"
             android:layout_width="99dp"
             android:layout_height="26dp"
-            android:text="Weight"
+            android:text="Position"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvTeam" />
     </androidx.constraintlayout.widget.ConstraintLayout>

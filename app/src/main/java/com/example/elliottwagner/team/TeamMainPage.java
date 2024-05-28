@@ -2,17 +2,20 @@ package com.example.elliottwagner.team;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elliottwagner.R;
 import com.example.elliottwagner.league.LeagueMenuPage;
@@ -25,6 +28,11 @@ public class TeamMainPage extends AppCompatActivity {
     Bundle extras = null;
     Button chooseTeam;
     View view;
+    RecyclerView rvTeamRoster;
+    TextView tvRoster;
+    TextView tvTeamScheduale;
+    TextView tvTeamNews;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,7 @@ public class TeamMainPage extends AppCompatActivity {
 
         view = findViewById(R.id.main);
         teamLogo = findViewById(R.id.ivTeamLogo);
+        tvRoster = findViewById(R.id.tvTeamRoster);
         teamLogo.setImageResource(Objects.requireNonNull(team).getLogo());
         switch (team.getName()){
             case "Regina":
@@ -56,11 +65,34 @@ public class TeamMainPage extends AppCompatActivity {
         }
         Log.d("TeamMainPage", "onCreate: " + team.getName());
         Log.d("TeamMainPage", "onCreate: " + team.getColor());
+        rvTeamRoster = findViewById(R.id.rvTeamRoster);
 
         chooseTeam = findViewById(R.id.btnOptions);
+        tvRoster = findViewById(R.id.tvTeamRoster);
+        tvTeamScheduale = findViewById(R.id.tvScoreboard);
+        tvTeamNews = findViewById(R.id.tvTeamNews);
+
         chooseTeam.setOnClickListener(v -> {
             Intent intent = new Intent(TeamMainPage.this, LeagueSelectTeam.class);
             startActivity(intent);
+        });
+        tvRoster.setOnClickListener(v -> {
+            Intent intent = new Intent(TeamMainPage.this, TeamRosterPage.class);
+            intent.putExtra("team", (Parcelable) team);
+            startActivity(intent);
+            Log.d("TeamMainPage", "onCreate: " + team.getName());
+        });
+        tvTeamScheduale.setOnClickListener(v -> {
+            Intent intent = new Intent(TeamMainPage.this, TeamSchedualePage.class);
+            intent.putExtra("team", (Parcelable) team);
+            startActivity(intent);
+            Log.d("TeamMainPage", "onCreate: " + team.getName());
+        });
+        tvTeamNews.setOnClickListener(v -> {
+            Intent intent = new Intent(TeamMainPage.this, TeamNewsPage.class);
+            intent.putExtra("team", (Parcelable) team);
+            startActivity(intent);
+            Log.d("TeamMainPage", "onCreate: " + team.getName());
         });
     }
     //TODO: Receive the team that was selected and display the logo on the top, and change the color

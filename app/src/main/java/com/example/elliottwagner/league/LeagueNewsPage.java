@@ -18,11 +18,12 @@ public class LeagueNewsPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_league_news_page);
         //will hide the title
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // hide the title bar
         Objects.requireNonNull(getSupportActionBar()).hide();
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_league_news_page);
+
     }
 }
