@@ -60,11 +60,11 @@ public class LeagueSelectTeam extends AppCompatActivity implements LeagueSelectT
         adapter = new LeagueSelectTeamAdapter(teams, this);
         recyclerView.setAdapter(adapter);
         dbhelper = new DBHelper(this);
-        dbhelper.addTeam(teams.get(0));
-        dbhelper.addTeam(teams.get(1));
-        dbhelper.addTeam(teams.get(2));
-        dbhelper.addTeam(teams.get(3));
-        dbhelper.addTeam(teams.get(4));
+//        dbhelper.addTeam(teams.get(0));
+//        dbhelper.addTeam(teams.get(1));
+//        dbhelper.addTeam(teams.get(2));
+//        dbhelper.addTeam(teams.get(3));
+//        dbhelper.addTeam(teams.get(4));
 
         button.setOnClickListener(v -> {
             Log.d("Button Clicked", "Back to League Menu");

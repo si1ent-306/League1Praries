@@ -85,7 +85,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 PLAYER_COUNTRY + " TEXT, " +
                 PLAYER_AGE + " INTEGER, " +
                 PLAYER_HEIGHT + " INTEGER, " +
-                PLAYER_WEIGHT + " INTEGER " +
+                PLAYER_WEIGHT + " INTEGER" +
                 ")";
 
         Log.d("DBHelper", "query made: " + queryCreatePlayersTable);
@@ -102,7 +102,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 TEAM_DRAWS + " INTEGER, " +
                 TEAM_POINTS + " INTEGER, " +
                 TEAM_GOAL_DIFFERENCE + " INTEGER, " +
-                TEAM_STANDING + " TEXT "+
+                TEAM_STANDING + " TEXT"+
                 ")";
         //Create a table for all of the games
         queryCreateGamesTable = "CREATE TABLE tblGames " +
@@ -114,7 +114,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 GAME_HOME_SCORE + " INTEGER, " +
                 GAME_AWAY_SCORE + " INTEGER, " +
                 GAME_START_TIME + " TEXT, " +
-                GAME_STADIUM + " TEXT " +
+                GAME_STADIUM + " TEXT" +
                 ")";
         //Create a table for all of the stats
         queryCreateStatsTable = "CREATE TABLE tblStats " +
@@ -128,7 +128,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 STAT_PLAYER_GOALS + " INTEGER, " +
                 STAT_PLAYER_ASSISTS + " INTEGER, " +
                 STAT_PLAYER_YELLOW_CARDS + " INTEGER, " +
-                STAT_PLAYER_RED_CARDS + " INTEGER " +
+                STAT_PLAYER_RED_CARDS + " INTEGER" +
                 ")";
 
         // execute the query

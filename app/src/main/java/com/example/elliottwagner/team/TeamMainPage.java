@@ -46,6 +46,7 @@ public class TeamMainPage extends AppCompatActivity {
 
         extras = getIntent().getExtras();
         Team team = Objects.requireNonNull(extras).getParcelable("team");
+        Log.d("TeamMainPage", "onCreate: " + team);
 
         view = findViewById(R.id.main);
         teamLogo = findViewById(R.id.ivTeamLogo);
@@ -80,7 +81,7 @@ public class TeamMainPage extends AppCompatActivity {
             Intent intent = new Intent(TeamMainPage.this, TeamRosterPage.class);
             intent.putExtra("team", (Parcelable) team);
             startActivity(intent);
-            Log.d("TeamMainPage", "onCreate: " + team.getName());
+            Log.d("TeamMainPage", "Roast click: " + team.getName());
         });
         tvTeamScheduale.setOnClickListener(v -> {
             Intent intent = new Intent(TeamMainPage.this, TeamSchedualePage.class);

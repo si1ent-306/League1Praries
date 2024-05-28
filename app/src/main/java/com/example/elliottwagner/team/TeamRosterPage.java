@@ -1,6 +1,7 @@
 package com.example.elliottwagner.team;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +25,11 @@ public class TeamRosterPage extends AppCompatActivity {
         setContentView(R.layout.activity_team_roster_page);
         recyclerView = findViewById(R.id.rvTeamRoster);
         LinearLayoutManager layoutManager = new LinearLayoutManager(TeamRosterPage.this);
+
+        extras = getIntent().getExtras();
         Team team = Objects.requireNonNull(extras).getParcelable("team");
+        Log.d("TeamRosterPage", "onCreate: " + team);
+
         recyclerView.setLayoutManager(layoutManager);
         teamRoster = (ArrayList<Player>) Objects.requireNonNull(team).getRoster();
         extras = getIntent().getExtras();
