@@ -16,8 +16,8 @@
         android:textAlignment="center"
         android:padding="10dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLeagueNews"
+    <WebView
+        android:id="@+id/wvLeagueNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"/>

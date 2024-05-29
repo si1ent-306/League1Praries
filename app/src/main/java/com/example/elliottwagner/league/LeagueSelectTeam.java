@@ -30,7 +30,7 @@ import java.util.Objects;
 
 public class LeagueSelectTeam extends AppCompatActivity implements LeagueSelectTeamAdapter.OnItemClickListener {
     RecyclerView recyclerView;
-    ArrayList<Team> teams;
+    ArrayList<Team> allTeams;
     LeagueSelectTeamAdapter adapter;
     Button button;
     DBHelper dbhelper;
@@ -42,29 +42,15 @@ public class LeagueSelectTeam extends AppCompatActivity implements LeagueSelectT
         // hide the title bar
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_league_select_team);
+        //Binding the views
         recyclerView = findViewById(R.id.rvTeamSelect);
         button = findViewById(R.id.btBackToLeague);
-        recyclerView.setLayoutManager(new LinearLayoutManager(LeagueSelectTeam.this));
-        List<Player> players = new ArrayList<>();
-        players.add(new Player( 0,1 , " ", "Player 1", "Canada", 19,"Striker", 0, 0,"Regina"  ));
-        players.add(new Player( 0,1 , " ", "Player 1", "Canada", 19,"Striker", 0, 0,"Regina"  ));
-        players.add(new Player( 0,1 , " ", "Player 1", "Canada", 19,"Striker", 0, 0,"Regina"  ));
-        teams = new ArrayList<>();
-        teams.add(new Team(0, players, "Regina", "Canada", "Saskatchewan", 1818, R.drawable.reginalogo, 0,0,0,0,0,0,0,0,0));
-        teams.add(new Team(1, players, "Saskatoon", "Canada", "Saskatchewan", 1818, R.drawable.saskatoonlogo, 0,0,0,0,0,0,0,0,0));
-        teams.add(new Team(2, players, "Valour", "Canada", "Saskatchewan", 1818, R.drawable.valourlogo, 0,0,0,0,0,0,0,0,0));
-        teams.add(new Team(3, players, "Brandon", "Canada", "Saskatchewan", 1818, R.drawable.brandonlogo, 0,0,0,0,0,0,0,0,0));
-        teams.add(new Team(4, players, "Regina", "Canada", "Saskatchewan", 1818, R.drawable.reginalogo, 0,0,0,0,0,0,0,0,0));
-
         // Set up the RecyclerView
-        adapter = new LeagueSelectTeamAdapter(teams, this);
-        recyclerView.setAdapter(adapter);
         dbhelper = new DBHelper(this);
-//        dbhelper.addTeam(teams.get(0));
-//        dbhelper.addTeam(teams.get(1));
-//        dbhelper.addTeam(teams.get(2));
-//        dbhelper.addTeam(teams.get(3));
-//        dbhelper.addTeam(teams.get(4));
+        allTeams = dbhelper.getAllTeams();
+        recyclerView.setLayoutManager(new LinearLayoutManager(LeagueSelectTeam.this));
+        adapter = new LeagueSelectTeamAdapter(allTeams, LeagueSelectTeam.this);
+        recyclerView.setAdapter(adapter);
 
         button.setOnClickListener(v -> {
             Log.d("Button Clicked", "Back to League Menu");
@@ -76,7 +62,7 @@ public class LeagueSelectTeam extends AppCompatActivity implements LeagueSelectT
 
     @Override
     public void onItemClick(int position) {
-        Team selectedTeam = teams.get(position);
+        Team selectedTeam = allTeams.get(position);
         Log.d("Team Clicked", "Selected Team: " + selectedTeam.getName());
         Intent intent = new Intent(this, TeamMainPage.class);
         intent.putExtra("team", (Parcelable) selectedTeam);

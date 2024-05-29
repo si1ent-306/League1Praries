@@ -47,25 +47,27 @@ public class TeamMainPage extends AppCompatActivity {
         extras = getIntent().getExtras();
         Team team = Objects.requireNonNull(extras).getParcelable("team");
         Log.d("TeamMainPage", "onCreate: " + team);
+        Log.d("TeamMainPage", "onCreate: " + team.getLogo());
 
         view = findViewById(R.id.main);
         teamLogo = findViewById(R.id.ivTeamLogo);
         tvRoster = findViewById(R.id.tvTeamRoster);
         teamLogo.setImageResource(Objects.requireNonNull(team).getLogo());
         switch (team.getName()){
-            case "Regina":
+            case "FC Regina":
                 view.setBackgroundColor(getResources().getColor(R.color.fcReginaBlue));
+                teamLogo.setImageResource(R.drawable.reginalogo);
                 break;
             case "Saskatoon":
                 view.setBackgroundColor(getResources().getColor(R.color.saskatoonGreen));
-
+                teamLogo.setImageResource(R.drawable.saskatoonlogo);
                 break;
-            case "Winnipeg":
+            case "Winnipeg FC":
                 view.setBackgroundColor(getResources().getColor(R.color.fcWinnipegRed));
+                teamLogo.setImageResource(R.drawable.winnipeglogo);
                 break;
         }
         Log.d("TeamMainPage", "onCreate: " + team.getName());
-        Log.d("TeamMainPage", "onCreate: " + team.getColor());
         rvTeamRoster = findViewById(R.id.rvTeamRoster);
 
         chooseTeam = findViewById(R.id.btnOptions);

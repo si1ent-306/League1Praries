@@ -1,14 +1,17 @@
 package com.example.elliottwagner.league;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elliottwagner.Game;
+import com.example.elliottwagner.GameAdapter;
 import com.example.elliottwagner.R;
 import com.example.elliottwagner.team.DBHelper;
 import com.example.elliottwagner.team.Player;
@@ -41,9 +45,12 @@ public class LeagueMenuPage extends AppCompatActivity {
     TextView tvStandings;
     TextView tvNews;
     RecyclerView standings;
+    RecyclerView rvLeagueScoreboard;
     DBHelper dbHelper;
     TeamAdapter standingsAdapter;
+    GameAdapter scoreboardAdapter;
     ArrayList<Team> teams;
+    WebView webview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,17 +132,41 @@ public class LeagueMenuPage extends AppCompatActivity {
 //        dbHelper.addGame(new Game(1, "05/03/2024", FCRegina, TeamWinnipeg, 0,0,"6:00", "Mosaic Stadium"));
         //set the layout
         standings = findViewById(R.id.rvStandings);
+        rvLeagueScoreboard = findViewById(R.id.rvLeagueScoreboard);
         standings.setLayoutManager(new LinearLayoutManager(LeagueMenuPage.this));
+        rvLeagueScoreboard.setLayoutManager(new LinearLayoutManager(LeagueMenuPage.this));
+        //get the teams from the database
         teams = dbHelper.getAllTeams();
         Log.d("League main page", "Teams: " + teams.toString());
-        standingsAdapter = new TeamAdapter(teams);
+        ArrayList<Team> standingsList = new ArrayList<>();
+        ArrayList<Game> scoreboardList = new ArrayList<>();
+        Game game = new Game(1, "05/03/2024", FCRegina, TeamWinnipeg, 0,0,"6:00", "Mosaic Stadium");
+        scoreboardList.add(game);
+        for(int i = 0; i < 4; i++) {
+            standingsList.add(teams.get(i));
+        }
+        scoreboardAdapter = new GameAdapter(scoreboardList);
+        rvLeagueScoreboard.setAdapter(scoreboardAdapter);
+        standingsAdapter = new TeamAdapter(standingsList);
         standings.setAdapter(standingsAdapter);
+
 
 
         chooseTeam = findViewById(R.id.btnOptions);
         tvScoreboard = findViewById(R.id.tvScoreboard);
         tvStandings = findViewById(R.id.tvStandings);
         tvNews = findViewById(R.id.tvNews);
+        webview = findViewById(R.id.webView);
+        String data = "";
+        data = "<HTML> " +
+                "<BODY> " +
+                "<H1>League Preview</H1> " +
+                "<IMG SRC='https://images2.minutemediacdn.com/image/upload/c_crop,w_4515,h_2539,x_0,y_183/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/90min_en_international_web/01ghvfc0eqe3qaz4remn.jpg'> " +
+                "<P>With the league starting soon, lets take a look at the preview of the league and upcoming matches.</P> " +
+                "</BODY> " +
+                "</HTML>";
+
+        webview.loadData(data, "text/html", "UTF-8");
 
         chooseTeam.setOnClickListener(v -> {
             Intent intent = new Intent(LeagueMenuPage.this, LeagueSelectTeam.class);
