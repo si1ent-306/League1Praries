@@ -16,9 +16,22 @@ import java.util.ArrayList;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     private final ArrayList<Team> teams;
+    private final ArrayList<Object> teamImages;
 
     public TeamAdapter(ArrayList<Team> teams) {
         this.teams = teams;
+
+        teamImages = new ArrayList<>();
+        teamImages.add(R.drawable.reginalogo);
+        teamImages.add(R.drawable.winnipeglogo);
+        teamImages.add(R.drawable.brandonlogo);
+        teamImages.add(R.drawable.mjlogo);
+        teamImages.add(R.drawable.valourlogo);
+        teamImages.add(R.drawable.yorktonlogo);
+        teamImages.add(R.drawable.manitobalogo);
+        teamImages.add(R.drawable.saskatoonlogo);
+        // int reginaImage = teamImages.get(teamImages.indexOf(R.drawable.reginalogo));
+
     }
 
     @NonNull
@@ -33,6 +46,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         Team team = teams.get(position);
         holder.teamStanding.setText(String.valueOf(team.getStanding()));
         holder.teamLogo.setImageResource(team.getLogo());
+//        holder.teamLogo.setImageResource(teamImages.indexOf(team.getLogo()));
         holder.teamWins.setText(String.valueOf(team.getWins()));
         holder.teamLosses.setText(String.valueOf(team.getLosses()));
         holder.teamDraws.setText(String.valueOf(team.getDraws()));

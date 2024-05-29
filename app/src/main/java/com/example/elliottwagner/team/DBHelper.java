@@ -36,6 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String TEAM_POINTS = "teamPoints";
     public static String TEAM_GOAL_DIFFERENCE = "teamGoalDifference";
     public static String TEAM_STANDING = "teamStanding";
+    public static String TEAM_LOGO = "teamLogo";
     public static String GAME_ID = "gameID";
     public static String GAME_DATE = "gameDate";
     public static String GAME_HOME_TEAM = "gameHomeTeam";
@@ -102,6 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 TEAM_DRAWS + " INTEGER, " +
                 TEAM_POINTS + " INTEGER, " +
                 TEAM_GOAL_DIFFERENCE + " INTEGER, " +
+                TEAM_LOGO + " INTEGER, " +
                 TEAM_STANDING + " TEXT"+
                 ")";
         //Create a table for all of the games
@@ -191,33 +193,34 @@ public class DBHelper extends SQLiteOpenHelper {
             int teamDraws = cursor.getInt(7);
             int teamPoints = cursor.getInt(8);
             int teamGoalDifference = cursor.getInt(9);
-            int teamStanding = cursor.getInt(10);
-            Team team = new Team(teamID,teamName,teamCity,teamDivision,teamColor,teamWins,teamLosses,teamDraws,teamPoints,teamGoalDifference, teamStanding);
+            int teamLogo = cursor.getInt(10);
+            int teamStanding = cursor.getInt(11);
+
+            Team team = new Team(teamID,teamName,teamCity,teamDivision,teamColor, teamLogo,teamWins,teamLosses,teamDraws,teamPoints,teamGoalDifference, teamStanding);
             teams.add(team);
         }
         return teams;
     }
-//    public ArrayList<Game> getAllGames(){
-//        ArrayList<Game> games = new ArrayList<>();
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        String query = "SELECT * FROM tblGames";
-//        Cursor cursor = db.rawQuery(query,null);
-//        while(cursor.moveToNext()){
-//            int  gameID = cursor.getInt(0);
-//            String gameDate = cursor.getString(1);
-//            String gameHomeTeam = cursor.getString(2);
-//            String gameAwayTeam = cursor.getString(3);
-//            int gameHomeScore = cursor.getInt(4);
-//            int gameAwayScore = cursor.getInt(5);
-//            String gameStartTime = cursor.getString(6);
-//            String gameStadium = cursor.getString(7);
-//            Game game = new Game(gameID,gameDate,null, null,gameHomeScore,gameAwayScore,gameStartTime,gameStadium);
-//            game.setHomeTeam(gameHomeTeam);
-//            game.setAwayTeam(gameAwayTeam);
-//            games.add(game);
-//        }
-//        return games;
-//    }
+    public ArrayList<Game> getAllGames(){
+        ArrayList<Game> games = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM tblGames";
+        Cursor cursor = db.rawQuery(query,null);
+        while(cursor.moveToNext()){
+            int  gameID = cursor.getInt(0);
+            String gameDate = cursor.getString(1);
+            String gameHomeTeam = cursor.getString(2);
+            String gameAwayTeam = cursor.getString(3);
+            int gameHomeScore = cursor.getInt(4);
+            int gameAwayScore = cursor.getInt(5);
+            String gameStartTime = cursor.getString(6);
+            String gameStadium = cursor.getString(7);
+            Game game = new Game(gameID,gameDate,gameHomeTeam,gameAwayTeam,gameHomeScore,gameAwayScore,gameStartTime,gameStadium);
+
+            games.add(game);
+        }
+        return games;
+    }
 
     public void addTeam(Team team) {
         // create a reference to the database (writable)
@@ -234,6 +237,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(TEAM_LOSSES, team.getLosses());
         values.put(TEAM_DRAWS, team.getDraws());
         values.put(TEAM_POINTS, team.getPoints());
+        values.put(TEAM_LOGO, team.getLogo());
         values.put(TEAM_GOAL_DIFFERENCE, team.getGoalDifference());
         // store the key-value pair to the table
         db.insert("tblTeams", null, values);
@@ -259,22 +263,22 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert("tblPlayers", null, values);
         db.close();
     }
-//    public void addGame(Game game) {
-//        // create a reference to the database (writable)
-//        SQLiteDatabase db = getWritableDatabase();
-//        // create the key-value pair for the record
-//        ContentValues values = new ContentValues();
-//        // put the values into the key-value pair
-//        values.put("gameID", game.getGameID());
-//        values.put("gameDate", game.getDateOfGame());
-//        values.put("gameHomeTeam", game.getHomeTeam());
-//        values.put("gameAwayTeam", game.getAwayTeam());
-//        values.put("gameHomeScore", game.getHomeScore());
-//        values.put("gameAwayScore", game.getAwayScore());
-//        values.put("gameStartTime", game.getStartTime());
-//        values.put("gameStadium", game.getStadium());
-//        // store the key-value pair to the table
-//        db.insert("tblGames", null, values);
-//        db.close();
-//    }
+    public void addGame(Game game) {
+        // create a reference to the database (writable)
+        SQLiteDatabase db = getWritableDatabase();
+        // create the key-value pair for the record
+        ContentValues values = new ContentValues();
+        // put the values into the key-value pair
+        values.put("gameID", game.getGameID());
+        values.put("gameDate", game.getDateOfGame());
+        values.put("gameHomeTeam", game.getHomeTeam());
+        values.put("gameAwayTeam", game.getAwayTeam());
+        values.put("gameHomeScore", game.getHomeScore());
+        values.put("gameAwayScore", game.getAwayScore());
+        values.put("gameStartTime", game.getStartTime());
+        values.put("gameStadium", game.getStadium());
+        // store the key-value pair to the table
+        db.insert("tblGames", null, values);
+        db.close();
+    }
 }

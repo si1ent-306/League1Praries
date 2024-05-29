@@ -41,6 +41,8 @@ public class LeagueSchedualeView extends AppCompatActivity {
             Log.d("Notification Clicked", "click detected");
             showNotification();
         });
+        //TODO: Create a recycler view for the games
+
     }
     //TODO: Create a notifiacation simulation for the game on the menu view
     private void showNotification() {

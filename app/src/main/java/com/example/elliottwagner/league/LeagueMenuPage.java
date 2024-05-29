@@ -40,17 +40,24 @@ import java.util.Objects;
 //LANDSCAPE AND PORTRAIT ON ALL PAGES
 
 public class LeagueMenuPage extends AppCompatActivity {
+    //Declare the Button and textview
     Button chooseTeam;
     TextView tvScoreboard;
     TextView tvStandings;
     TextView tvNews;
+    //Declare the recyclerview and webview
     RecyclerView standings;
     RecyclerView rvLeagueScoreboard;
+    WebView webview;
+    //Declare Database, adapter and arraylists
     DBHelper dbHelper;
     TeamAdapter standingsAdapter;
     GameAdapter scoreboardAdapter;
     ArrayList<Team> teams;
-    WebView webview;
+    ArrayList<Game> games;
+
+    ArrayList<Integer> teamImages;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +69,7 @@ public class LeagueMenuPage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         //set the layout
         setContentView(R.layout.activity_league_menu_page);
+        dbHelper = new DBHelper(this);
         //Create the players
         Player playerRegina = new Player(0, 1, "John", "Smith", "Canada", 20, "Striker", 0, 0, 0, 0, 0, 0, "FC Regina");
         Player playerWinnipeg = new Player(0, 1, "John", "Smith", "Canada", 20, "Striker", 0, 0, 0, 0, 0, 0, "Winnipeg FC");
@@ -71,11 +79,10 @@ public class LeagueMenuPage extends AppCompatActivity {
         Player playerYorkton = new Player(0, 1, "John", "Smith", "Canada", 20, "Striker", 0, 0, 0, 0, 0, 0, "Yorkton Wanderers");
         Player playerManitoba = new Player(0, 1, "John", "Smith", "Canada", 20, "Striker", 0, 0, 0, 0, 0, 0, "Manitoba United");
         Player playerSaskatoon = new Player(0, 1, "John", "Smith", "Canada", 20, "Striker", 0, 0, 0, 0, 0, 0, "Saskatoon Impact");
+
+
+
         //Add the players to the database
-        dbHelper = new DBHelper(this);
-
-
-
 //        dbHelper.addPlayer(playerRegina);
 //        dbHelper.addPlayer(playerWinnipeg);
 //        dbHelper.addPlayer(playerBrandon);
@@ -102,22 +109,40 @@ public class LeagueMenuPage extends AppCompatActivity {
         rosterManitoba.add(playerManitoba);
         List<Player> rosterSaskatoon = new ArrayList<>();
         rosterSaskatoon.add(playerSaskatoon);
+
+        //Create the images
+        teamImages = new ArrayList<>();
+        teamImages.add(R.drawable.reginalogo);
+        teamImages.add(R.drawable.winnipeglogo);
+        teamImages.add(R.drawable.brandonlogo);
+        teamImages.add(R.drawable.mjlogo);
+        teamImages.add(R.drawable.valourlogo);
+        teamImages.add(R.drawable.yorktonlogo);
+        teamImages.add(R.drawable.manitobalogo);
+        teamImages.add(R.drawable.saskatoonlogo);
+        int reginaImage = teamImages.get(teamImages.indexOf(R.drawable.reginalogo));
+        //TODO: Get the images to work with select team
+        //TODO: get the names to work with the scoreboard
+        //TODO: get the logo to work with the standings
+        //TODO: work on the teams
+        //TODO: work on the look and feel
+
         // add the teams to the database
-        Team FCRegina = new Team(1, rosterRegina, "FC Regina", "Regina", "Saskatchewan", 2600, R.drawable.reginalogo, 0, 0, 0, 0, 0, 0, 0, 0, 1);
-        Team TeamWinnipeg = new Team(2, rosterWinnipeg, "Winnipeg FC", "Winnipeg", "Manitoba", 1818, R.drawable.winnipeglogo, 0, 0, 0, 0, 0, 0, 0, 0, 2);
-        Team FCBrandon = new Team(3, rosterBrandon, "FC Brandon", "Victoria", "Manitoba", 1818, R.drawable.brandonlogo, 0, 0, 0, 0, 0, 0, 0, 0, 3);
-        Team AFCMJ = new Team(4, rosterMooseJaw, "AFC MJ", "Victoria", "Saskatchewan", 1818, R.drawable.mjlogo, 0, 0, 0, 0, 0, 0, 0, 0, 4);
-        Team ValourU21 = new Team(5, rosterValour, "Valour U21", "Victoria", "Manitoba", 1818, R.drawable.valourlogo, 0, 0, 0, 0, 0, 0, 0, 0, 5);
-        Team YorktonWanderers = new Team(6, rosterYorkton, "Yorkton Wanderers", "Yorkton", "Saskatchewan", 1818, R.drawable.yorktonlogo, 0, 0, 0, 0, 0, 0, 0, 0, 6);
-        Team ManitobaUnited = new Team(7, rosterManitoba, "Manitoba United", "Winnipeg", "Manitoba", 1818, R.drawable.manitobalogo, 0, 0, 0, 0, 0, 0, 0, 0, 7);
-        Team SaskatoonImpact = new Team(8, rosterSaskatoon, "Saskatoon Impact", "Victoria", "Saskatchewan", 1818, R.drawable.saskatoonlogo, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+        Team FCRegina = new Team(1, rosterRegina, "FC Regina", "Regina", "Saskatchewan", 2600, R.drawable.reginalogo, 20, 0, 0, 0, 0, 0, 0, 0, 1);
+        Team TeamWinnipeg = new Team(2, rosterWinnipeg, "Winnipeg FC", "Winnipeg", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.winnipeglogo)), 10, 0, 0, 0, 0, 0, 0, 0, 2);
+        Team FCBrandon = new Team(3, rosterBrandon, "FC Brandon", "Victoria", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 4, 0, 0, 0, 0, 0, 0, 3);
+        Team AFCMJ = new Team(4, rosterMooseJaw, "AFC MJ", "Victoria", "Saskatchewan", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 5, 0, 0, 0, 0, 0, 4);
+        Team ValourU21 = new Team(5, rosterValour, "Valour U21", "Victoria", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 5);
+        Team YorktonWanderers = new Team(6, rosterYorkton, "Yorkton Wanderers", "Yorkton", "Saskatchewan", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 6);
+        Team ManitobaUnited = new Team(7, rosterManitoba, "Manitoba United", "Winnipeg", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 7);
+        Team SaskatoonImpact = new Team(8, rosterSaskatoon, "Saskatoon Impact", "Victoria", "Saskatchewan", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 8);
 
         // fetch the existing teams
-        List<Team> existingTeams = dbHelper.getAllTeams();
 
         // if no teams are fetched, add the new teams
-        if (existingTeams.isEmpty()) {
+
             //Add the teams to the database
+        if (dbHelper.getAllTeams().isEmpty()) {
             dbHelper.addTeam(FCRegina);
             dbHelper.addTeam(TeamWinnipeg);
             dbHelper.addTeam(FCBrandon);
@@ -127,31 +152,38 @@ public class LeagueMenuPage extends AppCompatActivity {
             dbHelper.addTeam(ManitobaUnited);
             dbHelper.addTeam(SaskatoonImpact);
         }
+        // fetch the existing games
+        List<Game> gamesList = dbHelper.getAllGames();
+        // if no games are fetched, add the new games
+        if (gamesList.isEmpty()) {
+            dbHelper.addGame(new Game(1, "05/03/24", "FCRegina", "TeamWinnipeg", 0,0,"6:00", "Mosaic Stadium"));
+            dbHelper.addGame(new Game(2, "05/03/24", "FCRegina", "FCBrandon", 0,0,"6:00", "Mosaic Stadium"));
+            dbHelper.addGame(new Game(3, "05/04/24", "FCRegina", "AFCMJ", 0,0,"6:00", "Mosaic Stadium"));
+        }
 
-        //Create the games
-//        dbHelper.addGame(new Game(1, "05/03/2024", FCRegina, TeamWinnipeg, 0,0,"6:00", "Mosaic Stadium"));
-        //set the layout
+        //set the layouts
         standings = findViewById(R.id.rvStandings);
         rvLeagueScoreboard = findViewById(R.id.rvLeagueScoreboard);
         standings.setLayoutManager(new LinearLayoutManager(LeagueMenuPage.this));
         rvLeagueScoreboard.setLayoutManager(new LinearLayoutManager(LeagueMenuPage.this));
+
         //get the teams from the database
         teams = dbHelper.getAllTeams();
+        //get the games from the database
+        games = dbHelper.getAllGames();
         Log.d("League main page", "Teams: " + teams.toString());
+        //Make a new list to show with only the top 4 teams
         ArrayList<Team> standingsList = new ArrayList<>();
-        ArrayList<Game> scoreboardList = new ArrayList<>();
-        Game game = new Game(1, "05/03/2024", FCRegina, TeamWinnipeg, 0,0,"6:00", "Mosaic Stadium");
-        scoreboardList.add(game);
         for(int i = 0; i < 4; i++) {
             standingsList.add(teams.get(i));
         }
-        scoreboardAdapter = new GameAdapter(scoreboardList);
+        //Set the adapters
+        scoreboardAdapter = new GameAdapter(games);
         rvLeagueScoreboard.setAdapter(scoreboardAdapter);
         standingsAdapter = new TeamAdapter(standingsList);
         standings.setAdapter(standingsAdapter);
 
-
-
+        //Set the buttons
         chooseTeam = findViewById(R.id.btnOptions);
         tvScoreboard = findViewById(R.id.tvScoreboard);
         tvStandings = findViewById(R.id.tvStandings);
@@ -161,7 +193,7 @@ public class LeagueMenuPage extends AppCompatActivity {
         data = "<HTML> " +
                 "<BODY> " +
                 "<H1>League Preview</H1> " +
-                "<IMG SRC='https://images2.minutemediacdn.com/image/upload/c_crop,w_4515,h_2539,x_0,y_183/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/90min_en_international_web/01ghvfc0eqe3qaz4remn.jpg'> " +
+                "<IMG SRC='https://images2.minutemediacdn.com/image/upload/c_crop,w_4515,h_2539,x_0,y_183/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/GettyImages/mmsport/90min_en_international_web/01ghvfc0eqe3qaz4remn.jpg' WIDTH='100%' HEIGHT='50%'> " +
                 "<P>With the league starting soon, lets take a look at the preview of the league and upcoming matches.</P> " +
                 "</BODY> " +
                 "</HTML>";

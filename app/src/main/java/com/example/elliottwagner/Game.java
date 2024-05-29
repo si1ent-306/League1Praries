@@ -4,8 +4,8 @@ import com.example.elliottwagner.team.Team;
 
 public class Game {
 
-    private Team homeTeam;
-    private Team awayTeam;
+    private String homeTeam;
+    private String awayTeam;
     private int homeScore;
     private int awayScore;
     private String startTime;
@@ -13,7 +13,7 @@ public class Game {
     private int gameID;
     private String stadium;
 
-    public Game(int gameID, String  dateOfGame, Team homeTeam, Team awayTeam, int homeScore, int awayScore, String startTime, String stadium) {
+    public Game(int gameID, String  dateOfGame, String homeTeam, String awayTeam, int homeScore, int awayScore, String startTime, String stadium) {
 
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
@@ -25,19 +25,19 @@ public class Game {
         this.stadium = stadium;
     }
 
-    public Team getHomeTeam() {
+    public String getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(Team homeTeam) {
+    public void setHomeTeam(String homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public Team getAwayTeam() {
+    public String getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(Team awayTeam) {
+    public void setAwayTeam(String awayTeam) {
         this.awayTeam = awayTeam;
     }
 

@@ -4,28 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".league.LeagueSelectTeam">
 
     <TextView
         android:id="@+id/tvSelectATeam"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textAlignment="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/select_a_team" />
+        android:text="@string/select_a_team"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTeamSelect"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="6" />
 
     <Button
-        android:visibility="visible"
         android:id="@+id/btBackToLeague"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/back_to_leage" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/back_to_leage"
+        android:visibility="visible" />
 </LinearLayout>

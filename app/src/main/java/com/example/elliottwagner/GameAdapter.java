@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elliottwagner.league.TeamAdapter;
+import com.example.elliottwagner.team.Team;
 
 import java.util.ArrayList;
 
@@ -28,15 +29,12 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull GameAdapter.ViewHolder holder, int position) {
         Game game = games.get(position);
-        holder.gameID.setText(game.getGameID());
-        holder.homeTeam.setText(game.getHomeTeam().getName());
-        holder.awayTeam.setText(game.getAwayTeam().getName());
+        holder.gameID.setText(String.valueOf(game.getGameID()));
+        holder.homeTeam.setText(String.valueOf(game.getHomeTeam()));
+        holder.awayTeam.setText(String.valueOf(game.getAwayTeam()));
         holder.date.setText(game.getDateOfGame());
         holder.time.setText(game.getStartTime());
         holder.stadium.setText(game.getStadium());
-        holder.streamLink.setText("@string/streamLink");
-
-
     }
 
     @Override

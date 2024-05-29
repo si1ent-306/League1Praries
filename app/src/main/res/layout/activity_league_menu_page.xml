@@ -47,13 +47,14 @@
 
         <TextView
             android:id="@+id/tvScoreboard"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="League Scoreboard"
             android:textAlignment="center"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            id="@+id/rvLeagueScoreboard"
+            android:id="@+id/rvLeagueScoreboard"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
@@ -66,6 +67,7 @@
 
         <TextView
             android:id="@+id/tvStandings"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="League Standings"
@@ -79,21 +81,23 @@
 
     <LinearLayout
         android:id="@+id/llNews"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" android:padding="10dp">
 
         <TextView
+            android:layout_margin="10dp"
             android:id="@+id/tvNews"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="League News"
             android:textAlignment="center" />
 
         <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

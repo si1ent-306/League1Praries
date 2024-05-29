@@ -90,6 +90,26 @@ public class Team implements Serializable, Parcelable {
             return new Team[size];
         }
     };
+
+    public Team(int teamID, String teamName, String teamCity, String teamDivision, int teamColor, int teamLogo, int teamWins, int teamLosses, int teamDraws, int teamPoints, int teamGoalDifference, int teamStanding) {
+        this.id = teamID;
+        this.name = teamName;
+        this.city = teamCity;
+        this.division = teamDivision;
+        this.color = teamColor;
+        this.logo = teamLogo;
+        this.wins = teamWins;
+        this.losses = teamLosses;
+        this.draws = teamDraws;
+        this.points = teamPoints;
+        this.goalDifference = teamGoalDifference;
+        this.standing = teamStanding;
+        this.gamesPlayed = 0;
+        this.goalsScored = 0;
+        this.goalsAllowed = 0;
+        this.roster = null;
+    }
+
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
 
