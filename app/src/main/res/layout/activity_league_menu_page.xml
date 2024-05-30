@@ -50,7 +50,7 @@
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="League Scoreboard"
+            android:text="@string/league_scoreboard"
             android:textAlignment="center"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -70,7 +70,7 @@
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="League Standings"
+            android:text="@string/league_standings"
             android:textAlignment="center" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -91,7 +91,7 @@
             android:id="@+id/tvNews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="League News"
+            android:text="@string/league_news"
             android:textAlignment="center" />
 
         <WebView

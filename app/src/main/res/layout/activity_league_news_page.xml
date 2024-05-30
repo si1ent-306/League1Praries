@@ -12,7 +12,7 @@
         android:id="@+id/tvLeagueNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="League News"
+        android:text="@string/league_news"
         android:textAlignment="center"
         android:padding="10dp"/>
 

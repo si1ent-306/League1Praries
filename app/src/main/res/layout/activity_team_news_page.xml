@@ -12,7 +12,7 @@
         android:id="@+id/tvTeamNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Team News"
+        android:text="@string/team_news"
         android:textAlignment="center"
         android:padding="10dp"/>
 

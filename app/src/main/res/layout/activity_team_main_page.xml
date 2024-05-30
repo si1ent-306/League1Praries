@@ -50,7 +50,7 @@
             android:id="@+id/tvScoreboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Team Schedule"
+            android:text="@string/team_schedule"
             android:textAlignment="center"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -69,7 +69,7 @@
             android:id="@+id/tvTeamRoster"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Team Roster"
+            android:text="@string/team_roster"
             android:textAlignment="center" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -88,7 +88,7 @@
             android:id="@+id/tvTeamNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Team News"
+            android:text="@string/team_news"
             android:textAlignment="center" />
 
         <androidx.recyclerview.widget.RecyclerView

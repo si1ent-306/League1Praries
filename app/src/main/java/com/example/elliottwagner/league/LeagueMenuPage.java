@@ -148,7 +148,7 @@ public class LeagueMenuPage extends AppCompatActivity {
         List<Game> gamesList = dbHelper.getAllGames();
         // if no games are fetched, add the new games
         if (gamesList.isEmpty()) {
-            dbHelper.addGame(new Game(1, "05/03/24", "FCRegina", "TeamWinnipeg", 0,0,"6:00", "Mosaic Stadium"));
+            dbHelper.addGame(new Game(1, "05/03/24", "FCRegina", "Winnipeg", 0,0,"6:00", "Mosaic Stadium"));
             dbHelper.addGame(new Game(2, "05/03/24", "FCRegina", "FCBrandon", 0,0,"6:00", "Mosaic Stadium"));
             dbHelper.addGame(new Game(3, "05/04/24", "FCRegina", "AFCMJ", 0,0,"6:00", "Mosaic Stadium"));
         }

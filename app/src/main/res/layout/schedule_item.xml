@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -15,31 +16,32 @@
             android:textSize="10sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Game ID" />
+            android:text="@string/game_id" />
 
         <TextView
             android:id="@+id/tvHomeTeam"
             android:textSize="10sp"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Home Team" />
+            android:layout_weight="2"
+            android:text="@string/home_team" />
 
         <TextView
             android:id="@+id/tvAwayTeam"
             android:textSize="10sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Away Team" />
+            android:layout_weight="2"
+            android:text="@string/away_team" />
 
         <TextView
             android:id="@+id/tvDate"
             android:textSize="10sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Date" />
+            android:layout_weight="2"
+            android:text="@string/date" />
 
         <TextView
             android:id="@+id/tvTime"
@@ -47,7 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Time" />
+            android:text="@string/time" />
 
         <TextView
             android:id="@+id/tvStadium"
@@ -55,13 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Stadium" />
-        <TextView
-            android:id="@+id/tvStreamLink"
-            android:textSize="10sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Stream Link" />
+            android:text="@string/stadium" />
+
     </LinearLayout>
 </LinearLayout>

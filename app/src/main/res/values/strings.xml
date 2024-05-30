@@ -6,4 +6,15 @@
     <string name="stream_link">https://www.youtube.com/@league1canada298</string>
     <string name="team_roster">Team Roster</string>
     <string name="team_schedule">Team Schedule</string>
+    <string name="league_scoreboard">League Scoreboard</string>
+    <string name="league_standings">League Standings</string>
+    <string name="league_news">League News</string>
+    <string name="notification_simulation">Notification Simulation</string>
+    <string name="game_id">Game ID</string>
+    <string name="away_team">Away Team</string>
+    <string name="home_team">Home Team</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="stadium">Stadium</string>
+    <string name="team_news">Team News</string>
 </resources>

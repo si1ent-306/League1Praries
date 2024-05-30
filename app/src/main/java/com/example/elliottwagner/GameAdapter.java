@@ -59,7 +59,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
             date = itemView.findViewById(R.id.tvDate);
             time = itemView.findViewById(R.id.tvTime);
             stadium = itemView.findViewById(R.id.tvStadium);
-            streamLink = itemView.findViewById(R.id.tvStreamLink);
+
         }
     }
 }
