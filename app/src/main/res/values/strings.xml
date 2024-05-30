@@ -4,4 +4,6 @@
     <string name="select_a_team">Select A Team</string>
     <string name="back_to_leage">Back to League Page</string>
     <string name="stream_link">https://www.youtube.com/@league1canada298</string>
+    <string name="team_roster">Team Roster</string>
+    <string name="team_schedule">Team Schedule</string>
 </resources>

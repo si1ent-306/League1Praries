@@ -8,6 +8,12 @@
     android:orientation="vertical"
     tools:context=".team.TeamRosterPage">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/team_roster" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTeamRoster"
         android:layout_width="match_parent"

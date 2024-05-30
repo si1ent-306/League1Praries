@@ -26,7 +26,9 @@ public class LeagueNewsPage extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_league_news_page);
+        //get the view
         webView = findViewById(R.id.wvLeagueNews);
+        //load the html
         String data = "";
         data = "<HTML> " +
                 "<BODY> " +
@@ -54,7 +56,7 @@ public class LeagueNewsPage extends AppCompatActivity {
                 "this league is poised to become a pillar of Canadian soccer for years to come. Stay tuned for further announcements on teams, schedules, and how you can be part of the action!.</P> " +
                 "</BODY> " +
                 "</HTML>";
-
+        //load the html
         webView.loadData(data, "text/html", "UTF-8");
 
     }

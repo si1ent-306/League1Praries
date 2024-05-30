@@ -32,12 +32,10 @@ import com.example.elliottwagner.team.TeamRosterPage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-//THINGS TO DO FOR THIS PROJECT
-//USE STRINGS.XML TO SET TEXT
-//USE COLOR.XML TO SET COLORS
-//USE COMMENTS AND LOGS
-//USE CONSTRAINT LAYOUT PROPERLY
-//LANDSCAPE AND PORTRAIT ON ALL PAGES
+//Inspiration used included:
+//OneFootball : https://images.ctfassets.net/furi30ndpl6w/3TmuAqZysNDsVtjFWIDBek/b62e8f8450863ee050cadcc000cbe67a/preroll.png
+//SportNet App: https://play-lh.googleusercontent.com/rg4dF8U62eeE4-vvYIJayLAwrHNjst4zYTSideerCp0oy8rgcIocjTi4CkIjRMx62A=w526-h296-rw
+//CPL App: https://play-lh.googleusercontent.com/Qri-Qm-KhjqRfnTfs7qTmneYGq9j4vNYRF8LKzHThzly7cWgC9qu4pbWgptldBOsVmjV=w526-h296-rw
 
 public class LeagueMenuPage extends AppCompatActivity {
     //Declare the Button and textview
@@ -83,16 +81,16 @@ public class LeagueMenuPage extends AppCompatActivity {
 
 
         //Add the players to the database
-//        dbHelper.addPlayer(playerRegina);
-//        dbHelper.addPlayer(playerWinnipeg);
-//        dbHelper.addPlayer(playerBrandon);
-//        dbHelper.addPlayer(playerMooseJaw);
-//        dbHelper.addPlayer(playerValour);
-//        dbHelper.addPlayer(playerYorkton);
-//        dbHelper.addPlayer(playerManitoba);
-//        dbHelper.addPlayer(playerSaskatoon);
+        dbHelper.addPlayer(playerRegina);
+        dbHelper.addPlayer(playerWinnipeg);
+        dbHelper.addPlayer(playerBrandon);
+        dbHelper.addPlayer(playerMooseJaw);
+        dbHelper.addPlayer(playerValour);
+        dbHelper.addPlayer(playerYorkton);
+        dbHelper.addPlayer(playerManitoba);
+        dbHelper.addPlayer(playerSaskatoon);
 
-        //Create the teams
+        //Create the teams list of players
         List<Player> rosterRegina = new ArrayList<>();
         rosterRegina.add(playerRegina);
         List<Player> rosterWinnipeg = new ArrayList<>();
@@ -120,22 +118,16 @@ public class LeagueMenuPage extends AppCompatActivity {
         teamImages.add(R.drawable.yorktonlogo);
         teamImages.add(R.drawable.manitobalogo);
         teamImages.add(R.drawable.saskatoonlogo);
-        int reginaImage = teamImages.get(teamImages.indexOf(R.drawable.reginalogo));
-        //TODO: Get the images to work with select team
-        //TODO: get the names to work with the scoreboard
-        //TODO: get the logo to work with the standings
-        //TODO: work on the teams
-        //TODO: work on the look and feel
 
         // add the teams to the database
         Team FCRegina = new Team(1, rosterRegina, "FC Regina", "Regina", "Saskatchewan", 2600, R.drawable.reginalogo, 20, 0, 0, 0, 0, 0, 0, 0, 1);
-        Team TeamWinnipeg = new Team(2, rosterWinnipeg, "Winnipeg FC", "Winnipeg", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.winnipeglogo)), 10, 0, 0, 0, 0, 0, 0, 0, 2);
-        Team FCBrandon = new Team(3, rosterBrandon, "FC Brandon", "Victoria", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 4, 0, 0, 0, 0, 0, 0, 3);
-        Team AFCMJ = new Team(4, rosterMooseJaw, "AFC MJ", "Victoria", "Saskatchewan", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 5, 0, 0, 0, 0, 0, 4);
-        Team ValourU21 = new Team(5, rosterValour, "Valour U21", "Victoria", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 5);
-        Team YorktonWanderers = new Team(6, rosterYorkton, "Yorkton Wanderers", "Yorkton", "Saskatchewan", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 6);
-        Team ManitobaUnited = new Team(7, rosterManitoba, "Manitoba United", "Winnipeg", "Manitoba", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 7);
-        Team SaskatoonImpact = new Team(8, rosterSaskatoon, "Saskatoon Impact", "Victoria", "Saskatchewan", 1818,  teamImages.get(teamImages.indexOf(R.drawable.reginalogo)), 0, 0, 0, 0, 0, 0, 0, 0, 8);
+        Team TeamWinnipeg = new Team(2, rosterWinnipeg, "Winnipeg FC", "Winnipeg", "Manitoba", 1818,  R.drawable.winnipeglogo, 10, 0, 0, 0, 0, 0, 0, 0, 2);
+        Team FCBrandon = new Team(3, rosterBrandon, "FC Brandon", "Victoria", "Manitoba", 1818,  R.drawable.brandonlogo, 0, 4, 0, 0, 0, 0, 0, 0, 3);
+        Team AFCMJ = new Team(4, rosterMooseJaw, "AFC MJ", "Victoria", "Saskatchewan", 1818,  R.drawable.mjlogo, 0, 0, 5, 0, 0, 0, 0, 0, 4);
+        Team ValourU21 = new Team(5, rosterValour, "Valour U21", "Victoria", "Manitoba", 1818,  R.drawable.valourlogo, 0, 0, 0, 0, 0, 0, 0, 0, 5);
+        Team YorktonWanderers = new Team(6, rosterYorkton, "Yorkton Wanderers", "Yorkton", "Saskatchewan", 1818,  R.drawable.yorktonlogo, 0, 0, 0, 0, 0, 0, 0, 0, 6);
+        Team ManitobaUnited = new Team(7, rosterManitoba, "Manitoba United", "Winnipeg", "Manitoba", 1818,  R.drawable.manitobalogo, 0, 0, 0, 0, 0, 0, 0, 0, 7);
+        Team SaskatoonImpact = new Team(8, rosterSaskatoon, "Saskatoon Impact", "Victoria", "Saskatchewan", 1818,  R.drawable.saskatoonlogo, 0, 0, 0, 0, 0, 0, 0, 0, 8);
 
         // fetch the existing teams
 
@@ -189,6 +181,7 @@ public class LeagueMenuPage extends AppCompatActivity {
         tvStandings = findViewById(R.id.tvStandings);
         tvNews = findViewById(R.id.tvNews);
         webview = findViewById(R.id.webView);
+        //Load the webview with the league preview
         String data = "";
         data = "<HTML> " +
                 "<BODY> " +
@@ -199,7 +192,7 @@ public class LeagueMenuPage extends AppCompatActivity {
                 "</HTML>";
 
         webview.loadData(data, "text/html", "UTF-8");
-
+        //Set the onclick listeners
         chooseTeam.setOnClickListener(v -> {
             Intent intent = new Intent(LeagueMenuPage.this, LeagueSelectTeam.class);
             startActivity(intent);
@@ -221,5 +214,4 @@ public class LeagueMenuPage extends AppCompatActivity {
             Log.d("News", "Going to News");
         });
     }
-    //TODO: Fully Create the databases and try to make them work by creating each team once on this page.
 }

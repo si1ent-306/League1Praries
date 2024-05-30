@@ -35,12 +35,13 @@ public class LeagueStandingsPage extends AppCompatActivity {
         setContentView(R.layout.activity_league_standings_page);
 
 
+        //get the recyclerview
         recyclerView = findViewById(R.id.rvStandings);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dbHandler = new DBHelper(this);
+        //get the teams
         teams = dbHandler.getAllTeams();
         adapter = new TeamAdapter(teams);
         recyclerView.setAdapter(adapter);
     }
-    //TODO: Using streams, create the standings where the teams are sorted by their standings
 }

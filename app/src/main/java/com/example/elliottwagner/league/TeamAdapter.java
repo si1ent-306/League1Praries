@@ -46,7 +46,6 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         Team team = teams.get(position);
         holder.teamStanding.setText(String.valueOf(team.getStanding()));
         holder.teamLogo.setImageResource(team.getLogo());
-//        holder.teamLogo.setImageResource(teamImages.indexOf(team.getLogo()));
         holder.teamWins.setText(String.valueOf(team.getWins()));
         holder.teamLosses.setText(String.valueOf(team.getLosses()));
         holder.teamDraws.setText(String.valueOf(team.getDraws()));

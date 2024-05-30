@@ -2,6 +2,7 @@ package com.example.elliottwagner.team;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,10 @@ public class TeamRosterPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //will hide the title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // hide the title bar
+        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_team_roster_page);
         recyclerView = findViewById(R.id.rvTeamRoster);
         LinearLayoutManager layoutManager = new LinearLayoutManager(TeamRosterPage.this);

@@ -53,6 +53,7 @@ public class LeagueSelectTeam extends AppCompatActivity implements LeagueSelectT
         recyclerView.setAdapter(adapter);
 
         button.setOnClickListener(v -> {
+            // Handle button click event
             Log.d("Button Clicked", "Back to League Menu");
             Intent intent = new Intent(LeagueSelectTeam.this, LeagueMenuPage.class);
             startActivity(intent);
